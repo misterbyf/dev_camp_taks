@@ -1,10 +1,11 @@
 {
   "name": "dev_camp_taks",
   "version": "1.0.0",
-  "description": "",
+  "description": "1. Merge feature_1 branch into dev branch\r 2. Merge dev branch into main branch\r 3. Merge feature_2 branch into dev branch\r 4. Merge dev branch into main branch\r 5. Merge feature_3 branch into dev branch\r 6. Merge dev branch into main branch\r 7. Remove all merged \"feature\" branches\r 8. Add eslint rules and pre-commit hooks ([husky](https://www.npmjs.com/package/husky))",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,26 @@
   "bugs": {
     "url": "https://github.com/mksoroka/dev_camp_taks/issues"
   },
-  "homepage": "https://github.com/mksoroka/dev_camp_taks#readme"
+  "homepage": "https://github.com/mksoroka/dev_camp_taks#readme",
+  "devDependencies": {
+    "eslint": "^7.15.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-html": "^6.1.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.2.0",
+    "prettier": "^2.2.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run lint:fix",
+      "git add ."
+    ]
+  }
 }
